@@ -29,6 +29,7 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa github.com
         ls
+        ssh -i pacslacii-visualization.pem ubuntu@199.116.235.179
       
       
 
