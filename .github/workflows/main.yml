@@ -24,7 +24,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Connect to Cybera Server
       run: |
-        ssh -i <( echo ${{ secrets.SSH_KEY }} ) ubuntu@199.116.235.179
+        ssh ${{ secrets.SSH_KEY }} ubuntu@199.116.235.179
         exit
         echo Connected successfully.
       
