@@ -24,8 +24,10 @@ jobs:
     # Runs a single command using the runners shell
     - name: Connect to Cybera Server
       run: |
-        ssh-keygen -R 199.116.235.179
+        ssh -i pacslacii-visualization.pem ubuntu@199.116.235.179
+        exit
         echo Connected successfully.
+      
       
 
 
