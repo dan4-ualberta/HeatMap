@@ -20,13 +20,11 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-      
-    - name: Hello world action
-      env: # Or as an environment variable
-        super_secret: ${{ secrets.SSH_KEY }}
 
     # Runs a single command using the runners shell
     - name: Connect to Cybera Server
+      env: # Or as an environment variable
+        super_secret: ${{ secrets.SSH_KEY }}
       run: 
         ssh-keygen -R 199.116.235.179
         ssh -i super_secret ubuntu@199.116.235.179
