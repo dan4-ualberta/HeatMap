@@ -26,7 +26,9 @@ jobs:
     - name: Testing on the other branch
       run: |
         ls
-        git checkout Test
+        git remote update
+        git fetch 
+        git checkout --track origin/Test
         rm test.csv
         ls
 
