@@ -23,13 +23,11 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a single command using the runners shell
-    - name: SSH
+    - name: Testing on the other branch
       run: |
-        mkdir ~/.ssh
-        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -t rsa github.com
-        ssh -tt ubuntu@199.116.235.179
+        ls
+        git checkout Test
+        rm test.csv
         ls
 
 
