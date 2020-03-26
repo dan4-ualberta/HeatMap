@@ -1,3 +1,4 @@
+
 # This is a basic workflow to help you get started with Actions
 
 name: Deploy Test
@@ -13,16 +14,22 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    name: Build
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@master
-      with:
-        host: ubuntu@199.116.235.179
-        key: ${{ secrets.SSH_KEY }}
-        script: whoami
-      
-      
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a single command using the runners shell
+    - name: SSH
+      run: |
+        mkdir ~/.ssh
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -t rsa github.com
+        ls
+        ssh -tt -i ${{ secrets.SSH_KEY }} ubuntu@199.116.235.179
 
 
