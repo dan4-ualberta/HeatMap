@@ -30,7 +30,7 @@ jobs:
         ssh-keyscan -t rsa github.com
         ls
         cat pacslacii-visualization.pem
-        ssh -tt -i pacslacii-visualization.pem ubuntu@199.116.235.179
+        ssh -tt -i ${{ secrets.SSH_KEY }} ubuntu@199.116.235.179
       
       
 
