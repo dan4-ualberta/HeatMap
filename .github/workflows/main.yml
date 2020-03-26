@@ -30,7 +30,7 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa github.com
         echo "${{ secrets.SSH_KEY }}"
-        ssh -tt -i ${{ secrets.SSH_KEY }} ubuntu@199.116.235.179
+        ssh -tt ubuntu@199.116.235.179
         ls
 
 
