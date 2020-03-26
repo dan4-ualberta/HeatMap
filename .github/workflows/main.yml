@@ -31,8 +31,14 @@ jobs:
         git checkout --track origin/Test
         rm test.csv
         ls
-        git add -A
-        git commit -m "test.csv removed"
-        git git push https://dan-ualberta:bayi201213@HeatMap.biz/file.git --all
+      
+    - name: Testing on the SSH
+      run: |
+        mkdir ~/.ssh
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -t rsa github.com
+        ssh ubuntu@199.116.235.179
+
 
 
