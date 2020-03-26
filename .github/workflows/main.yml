@@ -55,6 +55,7 @@ jobs:
           git add -A
           git commit -m "New Push from Master"
           git push origin CyberaTest
+          rm -r /home/ubuntu/backup
           exit
         EOF
 
