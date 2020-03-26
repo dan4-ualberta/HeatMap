@@ -38,7 +38,7 @@ jobs:
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa github.com
-        ssh ubuntu@199.116.235.179
+        ssh -tt ubuntu@199.116.235.179
 
 
 
