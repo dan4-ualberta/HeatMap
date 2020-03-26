@@ -39,8 +39,22 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa 199.116.235.179 >> ~/.ssh/known_hosts
         ssh -tt ubuntu@199.116.235.179 << EOF
-          ls
-          whoami
+          cd PacslacII-Visualization/
+          git checkout master
+          git pull origin master
+          cp -avr PacslacVisualization /home/ubuntu/backup/PacslacVisualization
+          cp -avr Visuals /home/ubuntu/backup/Visuals
+          cp -avr manage.py /home/ubuntu/backup/
+          git checkout CyberaTest
+          rm -r app/PacslacVisualization/
+          rm -r app/Visuals/
+          rm -r app/manage.py
+          cp -avr /home/ubuntu/backup/PacslacVisualization app/PacslacVisualization
+          cp -avr /home/ubuntu/backup/Visuals app/Visuals
+          cp -avr /home/ubuntu/backup/manage.py app
+          git add -A
+          git commit -m "New Push from Master"
+          git push origin CyberaTest
           exit
         EOF
 
