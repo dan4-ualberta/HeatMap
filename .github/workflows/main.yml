@@ -43,8 +43,6 @@ jobs:
     - name: Connecting to the SSH
       run: |
         ssh -tt ubuntu@199.116.235.179
-        ls
-        exit
 
 
 
