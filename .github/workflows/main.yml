@@ -1,43 +1,25 @@
 
-# This is a basic workflow to help you get started with Actions
 
-name: Deploy Test
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+name: Deployment Pipeline 
+
 on:
   push:
     branches: [ master ]
 
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Testing on the other branch
-      run: |
-        ls
-        git remote update
-        git fetch 
-        git checkout --track origin/Test
-        rm test.csv
-        ls
-      
-    - name: Connect to Cybera
+    - name: Storing SSH Key
       run: |
         mkdir ~/.ssh
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa 199.116.235.179 >> ~/.ssh/known_hosts
+    - name: Deploying on Cybera
+      run: |
         ssh -tt ubuntu@199.116.235.179 << EOF
           mkdir backup
           cd PacslacII-Visualization/
