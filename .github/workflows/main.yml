@@ -39,6 +39,7 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa 199.116.235.179 >> ~/.ssh/known_hosts
         ssh -tt ubuntu@199.116.235.179 << EOF
+          mkdir backup
           cd PacslacII-Visualization/
           git checkout master
           git pull origin master
