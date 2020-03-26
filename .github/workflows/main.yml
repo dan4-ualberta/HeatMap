@@ -38,7 +38,12 @@ jobs:
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa 199.116.235.179 >> ~/.ssh/known_hosts
-        ssh -tt ubuntu@199.116.235.179 <<< whoami
+        ssh -tt ubuntu@199.116.235.179 << EOF
+          ls
+          whoami
+          exit
+        EOF
+
         
 
 
