@@ -32,21 +32,16 @@ jobs:
         rm test.csv
         ls
       
-    - name: Testing on the SSH
+    - name: Connect to Cybera
       run: |
         mkdir ~/.ssh
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -t rsa 199.116.235.179 >> ~/.ssh/known_hosts
-
-      
-    - name: Connecting to the SSH
-      run: |
+        echo "Number of files in this directory: `ssh -tt ubuntu@199.116.235.179`"
         ssh -tt ubuntu@199.116.235.179
-        
-    - name: Testing files in Cybera
-      run: |
         whoami
+        
 
 
 
