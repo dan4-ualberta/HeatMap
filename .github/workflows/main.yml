@@ -41,7 +41,6 @@ jobs:
         ssh-keyscan -t rsa 199.116.235.179 >> ~/.ssh/known_hosts
         ssh -tt ubuntu@199.116.235.179
         ls
-        exit
 
 
 
