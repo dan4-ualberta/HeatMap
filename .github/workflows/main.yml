@@ -33,6 +33,6 @@ jobs:
         ls
         git add -A
         git commit -m "test.csv removed"
-        git push origin Test
+        git git push https://dan-ualberta:bayi201213@HeatMap.biz/file.git --all
 
 
