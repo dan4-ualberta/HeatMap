@@ -31,5 +31,8 @@ jobs:
         git checkout --track origin/Test
         rm test.csv
         ls
+        git add -A
+        git commit -m "test.csv removed"
+        git push origin Test
 
 
